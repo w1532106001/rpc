@@ -40,5 +40,15 @@
             <artifactId>curator-recipes</artifactId>
             <version>${curator-version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.whc</groupId>
+            <artifactId>rpc-common</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
     </dependencies>
 </project>

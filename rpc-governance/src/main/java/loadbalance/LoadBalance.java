@@ -12,7 +12,7 @@ public interface LoadBalance {
     /**
      * 通过负载均衡算法选择服务地址
      * @param serviceAddresses 地址列表
-     * @return
+     * @return 服务地址
      */
     String selectServiceAddress(List<String> serviceAddresses);
 }

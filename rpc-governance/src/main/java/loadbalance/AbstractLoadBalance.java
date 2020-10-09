@@ -8,6 +8,7 @@ import java.util.List;
  * @description 抽象负载均衡算法
  */
 public abstract class AbstractLoadBalance implements LoadBalance {
+    @Override
     public String selectServiceAddress(List<String> serviceAddresses) {
         if (serviceAddresses == null && serviceAddresses.size() == 0) {
             return null;
@@ -18,5 +19,10 @@ public abstract class AbstractLoadBalance implements LoadBalance {
         return doSelect(serviceAddresses);
     }
 
+    /**
+     * 选择服务地址
+     * @param serviceAddresses 服务地址
+     * @return 服务地址
+     */
     protected abstract String doSelect(List<String> serviceAddresses);
 }

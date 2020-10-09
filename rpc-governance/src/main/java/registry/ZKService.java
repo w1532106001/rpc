@@ -1,17 +1,22 @@
-package registry.zookeeper;
+package registry;
 
 import java.net.InetSocketAddress;
 
+
 /**
- *
+ * @author whc
+ * @date 2020/10/9
+ * @description
  */
-public interface ServiceRegister {
+public interface ZKService {
     /**
      * 注册服务
      * @param rpcServiceName 服务名称
      * @param inetSocketAddress 服务地址
      */
     void registerService(String rpcServiceName, InetSocketAddress inetSocketAddress);
+
+
 
     /**
      * 下线服务，主动下线服务.
@@ -22,11 +27,11 @@ public interface ServiceRegister {
     void removeService(String rpcServiceName);
 
     /**
-     * 拉取服务注册信息.
+     * 查找服务注册信息.
      *
      * @return 服务注册信息.
-     * @param serviceName 服务名称
+     * @param rpcServiceName 服务名称
      */
-    InetSocketAddress discoverService(String serviceName);
+    InetSocketAddress findService(String rpcServiceName);
 
 }
