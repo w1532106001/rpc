@@ -12,6 +12,7 @@
         <module>rpc-server</module>
         <module>rpc-governance</module>
         <module>rpc-common</module>
+        <module>service-api</module>
     </modules>
     <properties>
         <spring.version>5.0.4.RELEASE</spring.version>

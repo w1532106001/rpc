@@ -22,7 +22,6 @@ public interface ZKService {
      * 下线服务，主动下线服务.
      *
      * @param rpcServiceName 下线服务名称.
-     * @return 下线的服务信息.
      */
     void removeService(String rpcServiceName);
 
