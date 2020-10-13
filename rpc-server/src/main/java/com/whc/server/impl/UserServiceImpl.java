@@ -1,6 +1,6 @@
 package com.whc.server.impl;
 
-import entity.User;
+import com.whc.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import service.UserService;

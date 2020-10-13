@@ -13,6 +13,7 @@
         <module>rpc-governance</module>
         <module>rpc-common</module>
         <module>service-api</module>
+        <module>rpc-client</module>
     </modules>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -65,7 +66,11 @@
             <artifactId>protostuff-runtime</artifactId>
             <version>${google.protostuff.version}</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <version>2.2.0.RELEASE</version>
+        </dependency>
         <!-- log -->
         <dependency>
             <groupId>org.slf4j</groupId>

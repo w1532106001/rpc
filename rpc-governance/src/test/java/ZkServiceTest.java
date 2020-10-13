@@ -1,7 +1,7 @@
-
+import com.whc.registry.ZKService;
+import com.whc.registry.zookeeper.ZKServiceImpl;
 import org.junit.jupiter.api.Test;
-import registry.ZKService;
-import registry.zookeeper.ZKServiceImpl;
+
 import java.net.InetSocketAddress;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

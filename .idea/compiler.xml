@@ -11,9 +11,10 @@
         <module name="rpcgovernance" />
         <module name="rpc-common" />
         <module name="service-api" />
-        <module name="rpc-governance" />
         <module name="rpcserver" />
         <module name="rpc-server" />
+        <module name="rpc-governance" />
+        <module name="rpc-client" />
       </profile>
     </annotationProcessing>
   </component>

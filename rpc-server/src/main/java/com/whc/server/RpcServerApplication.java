@@ -1,30 +1,38 @@
 package com.whc.server;
 
-import entity.RpcServiceProperties;
+import com.whc.entity.RpcServiceProperties;
+import com.whc.remoting.transport.netty.server.NettyServer;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import remoting.transport.netty.server.NettyServer;
+import org.springframework.context.annotation.ComponentScan;
 import service.UserService;
 
 import javax.annotation.Resource;
 
+/**
+ * @author whc
+ */
+@ComponentScan(basePackages = {"com.whc"})
 @SpringBootApplication
-public class RpcServerApplication {
+public class RpcServerApplication implements CommandLineRunner {
 
     @Resource
-    private static NettyServer nettyServer;
+    private NettyServer nettyServer;
     @Resource
-    private static UserService userService;
+    private UserService userService;
 
     public static void main(String[] args) {
         SpringApplication.run(RpcServerApplication.class, args);
-        startRpcServer();
     }
 
-    public static void startRpcServer() {
+    @Override
+    public void run(String... args) throws Exception {
+
         RpcServiceProperties rpcServiceProperties = RpcServiceProperties.builder()
                 .group("test").version("version").build();
         nettyServer.registerService(userService, rpcServiceProperties);
         nettyServer.start();
+
     }
 }
