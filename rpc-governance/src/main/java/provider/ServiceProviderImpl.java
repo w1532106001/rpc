@@ -4,6 +4,7 @@ import entity.RpcServiceProperties;
 import enums.RpcErrorMessageEnum;
 import exceptions.RpcException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import registry.ZKService;
 import registry.zookeeper.ZKServiceImpl;
 import remoting.transport.netty.server.NettyServer;
@@ -19,6 +20,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * @date 2020/10/11 19:39
  */
 @Slf4j
+@Component
 public class ServiceProviderImpl implements ServiceProvider {
 
 

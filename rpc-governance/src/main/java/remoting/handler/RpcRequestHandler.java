@@ -2,6 +2,7 @@ package remoting.handler;
 
 import exceptions.RpcException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Component;
 import provider.ServiceProvider;
 import provider.ServiceProviderImpl;
 import remoting.dto.RpcRequest;
@@ -14,6 +15,7 @@ import java.lang.reflect.Method;
  * @date 2020/10/11 20:54
  */
 @Slf4j
+@Component
 public class RpcRequestHandler {
     private final ServiceProvider serviceProvider;
 

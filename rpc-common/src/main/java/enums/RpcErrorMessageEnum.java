@@ -5,8 +5,8 @@ import lombok.Getter;
 import lombok.ToString;
 
 /**
- * @author shuang.kou
- * @createTime 2020年05月12日 16:45:00
+ * @author whc
+ * @createTime 2020年10月13日
  */
 @AllArgsConstructor
 @Getter
