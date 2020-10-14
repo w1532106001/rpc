@@ -24,4 +24,26 @@
             <scope>compile</scope>
         </dependency>
     </dependencies>
+
+    <!-- 打包的时候带其他的子模块 -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 指定程序的主类 -->
+                <configuration>
+                    <mainClass>com.whc.client.RpcClientApplication</mainClass>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+
+    </build>
 </project>

@@ -24,18 +24,27 @@
         </dependency>
     </dependencies>
 
+
+    <!-- 打包的时候带其他的子模块 -->
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <!-- 指定程序的主类 -->
                 <configuration>
-                    <source>6</source>
-                    <target>6</target>
+                    <mainClass>com.whc.server.RpcServerApplication</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
-    </build>
 
+    </build>
 
 </project>

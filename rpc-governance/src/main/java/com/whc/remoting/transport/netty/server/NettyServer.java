@@ -14,6 +14,7 @@ import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
@@ -29,7 +30,8 @@ public class NettyServer {
     /**
      * 本地端口
      */
-    public static final int PORT = 9999;
+    @Value("${netty.port}")
+    public int PORT;
     private final ServiceProvider serviceProvider;
     private final NettyServerHandler nettyServerHandler;
 

@@ -4,8 +4,8 @@ import com.whc.entity.RpcServiceProperties;
 import com.whc.enums.RpcErrorMessageEnum;
 import com.whc.exceptions.RpcException;
 import com.whc.registry.ZKService;
-import com.whc.remoting.transport.netty.server.NettyServer;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.net.InetAddress;
@@ -29,6 +29,8 @@ public class ServiceProviderImpl implements ServiceProvider {
      */
     private final Map<String, Object> serviceMap = new ConcurrentHashMap<>();
     private final ZKService zkService;
+    @Value("${netty.port}")
+    public int PORT;
 
     public ServiceProviderImpl(ZKService zkService) {
         this.zkService = zkService;
@@ -67,7 +69,7 @@ public class ServiceProviderImpl implements ServiceProvider {
             rpcServiceProperties.setServiceName(serviceName);
             this.addService(service, serviceInterface, rpcServiceProperties);
             //注册服务
-            zkService.registerService(rpcServiceProperties.toRpcServiceName(), new InetSocketAddress(host, NettyServer.PORT));
+            zkService.registerService(rpcServiceProperties.toRpcServiceName(), new InetSocketAddress(host, PORT));
         } catch (UnknownHostException e) {
             log.error("获取host地址发生异常", e);
             e.printStackTrace();

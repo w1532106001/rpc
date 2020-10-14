@@ -1,2 +1,4 @@
 server:
   port: 9003
+netty:
+  port: 9999
