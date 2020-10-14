@@ -1,9 +1,10 @@
 package com.whc.server.impl;
 
+import com.whc.annotation.RpcService;
 import com.whc.entity.User;
+import com.whc.service.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import service.UserService;
+import org.springframework.stereotype.Component;
 
 /**
  * @author whc
@@ -11,10 +12,12 @@ import service.UserService;
  * @description
  */
 @Slf4j
-@Service
+@RpcService(version = "1", group = "test")
+@Component
 public class UserServiceImpl implements UserService {
     @Override
-    public void login(User user) {
+    public String login(User user) {
         log.info("登录成功:[{}]", user.toString());
+        return user.toString();
     }
 }

@@ -1,4 +1,4 @@
-package service;
+package com.whc.service;
 
 import com.whc.entity.User;
 
@@ -12,5 +12,5 @@ public interface UserService {
      *
      * @param user 用户类
      */
-    void login(User user);
+    String login(User user);
 }

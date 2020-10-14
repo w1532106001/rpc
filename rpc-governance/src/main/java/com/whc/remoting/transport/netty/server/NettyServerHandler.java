@@ -13,7 +13,6 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -25,11 +24,14 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
-    @Autowired
-    private RpcRequestHandler rpcRequestHandler;
+    private final RpcRequestHandler rpcRequestHandler;
+
+    public NettyServerHandler(RpcRequestHandler rpcRequestHandler) {
+        this.rpcRequestHandler = rpcRequestHandler;
+    }
 
     @Override
-    public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+    public void channelRead(ChannelHandlerContext ctx, Object msg) {
         try {
             if (msg instanceof RpcMessage) {
                 log.info("服务器收到消息:[{}]", msg);

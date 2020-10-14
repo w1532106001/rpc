@@ -6,7 +6,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
-import service.UserService;
 
 import javax.annotation.Resource;
 
@@ -19,8 +18,8 @@ public class RpcServerApplication implements CommandLineRunner {
 
     @Resource
     private NettyServer nettyServer;
-    @Resource
-    private UserService userService;
+//    @RpcReference(version = "1",group = "test")
+//    private UserService userService;
 
     public static void main(String[] args) {
         SpringApplication.run(RpcServerApplication.class, args);
@@ -31,7 +30,7 @@ public class RpcServerApplication implements CommandLineRunner {
 
         RpcServiceProperties rpcServiceProperties = RpcServiceProperties.builder()
                 .group("test").version("version").build();
-        nettyServer.registerService(userService, rpcServiceProperties);
+//        nettyServer.registerService(userService, rpcServiceProperties);
         nettyServer.start();
 
     }

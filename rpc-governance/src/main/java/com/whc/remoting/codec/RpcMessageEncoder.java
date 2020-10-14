@@ -28,10 +28,12 @@ public class RpcMessageEncoder extends MessageToByteEncoder<RpcMessage> {
         out.writeBytes(RpcConstants.MAGIC_NUMBER);
         out.writeByte(RpcConstants.VERSION);
         //留4个长度写全长值
-        out.writerIndex(out.writerIndex() + 2);
+        out.writerIndex(out.writerIndex() + 4);
         //获取消息类型
         byte messageType = rpcMessage.getMessageType();
         out.writeByte(messageType);
+        out.writeByte('b');
+        out.writeByte('c');
         out.writeInt(ATOMIC_INTEGER.getAndIncrement());
         //建立全长
         byte[] bodyBytes = null;

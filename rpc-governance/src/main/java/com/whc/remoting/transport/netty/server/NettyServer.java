@@ -3,6 +3,8 @@ package com.whc.remoting.transport.netty.server;
 import com.whc.config.ShutdownHook;
 import com.whc.entity.RpcServiceProperties;
 import com.whc.provider.ServiceProvider;
+import com.whc.remoting.codec.RpcMessageDecoder;
+import com.whc.remoting.codec.RpcMessageEncoder;
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -29,9 +31,11 @@ public class NettyServer {
      */
     public static final int PORT = 9999;
     private final ServiceProvider serviceProvider;
+    private final NettyServerHandler nettyServerHandler;
 
-    public NettyServer(ServiceProvider serviceProvider) {
+    public NettyServer(ServiceProvider serviceProvider, NettyServerHandler nettyServerHandler) {
         this.serviceProvider = serviceProvider;
+        this.nettyServerHandler = nettyServerHandler;
     }
 
     /**
@@ -71,9 +75,9 @@ public class NettyServer {
                             // 30 秒之内没有收到客户端请求的话就关闭连接
                             ChannelPipeline p = socketChannel.pipeline();
                             p.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
-                            p.addLast();
-                            p.addLast();
-                            p.addLast(serviceHandlerGroup, new NettyServerHandler());
+                            p.addLast(new RpcMessageEncoder());
+                            p.addLast(new RpcMessageDecoder());
+                            p.addLast(serviceHandlerGroup, nettyServerHandler);
                         }
 
                     });

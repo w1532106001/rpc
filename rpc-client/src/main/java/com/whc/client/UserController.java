@@ -1,8 +1,9 @@
 package com.whc.client;
 
-import com.whc.remoting.client.NettyClientTransport;
-import com.whc.remoting.dto.RpcRequest;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.whc.annotation.RpcReference;
+import com.whc.entity.User;
+import com.whc.service.UserService;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("user")
 public class UserController {
 
-    @Autowired
-    private NettyClientTransport nettyClientTransport;
+    @RpcReference(version = "1", group = "test")
+    private UserService userService;
 
+    @PostMapping("/login")
     public String login(String username, String password) {
-        RpcRequest rpcRequest = new RpcRequest();
-        nettyClientTransport.sendRpcRequest().;
+        return userService.login(new User(username, password, 18));
     }
 }

@@ -36,7 +36,14 @@ public class RpcMessageDecoder extends LengthFieldBasedFrameDecoder {
         if (decoded instanceof ByteBuf) {
             ByteBuf frame = (ByteBuf) decoded;
             if (frame.readableBytes() >= RpcConstants.TOTAL_LENGTH) {
-                return decodeFrame(frame);
+                try {
+                    return decodeFrame(frame);
+                } catch (Exception e) {
+                    log.error("Decode frame error!", e);
+                    throw e;
+                } finally {
+                    frame.release();
+                }
             }
         }
         return decoded;
@@ -60,6 +67,8 @@ public class RpcMessageDecoder extends LengthFieldBasedFrameDecoder {
         int fullLength = in.readInt();
         // 构建RpcMessage对象
         byte messageType = in.readByte();
+        byte codecType = in.readByte();
+        byte compressType = in.readByte();
         int requestId = in.readInt();
         RpcMessage rpcMessage = RpcMessage.builder()
                 .requestId(requestId)
