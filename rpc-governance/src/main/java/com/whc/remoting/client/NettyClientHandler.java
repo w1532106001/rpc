@@ -3,6 +3,7 @@ package com.whc.remoting.client;
 import com.whc.remoting.constants.RpcConstants;
 import com.whc.remoting.dto.RpcMessage;
 import com.whc.remoting.dto.RpcResponse;
+import com.whc.utils.SpringUtil;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -11,7 +12,6 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
 
@@ -20,15 +20,14 @@ import java.net.InetSocketAddress;
  * @date 2020/10/13
  * @description
  */
-@Component
 @Slf4j
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     private final UnprocessedRequests unprocessedRequests;
     private final ChannelProvider channelProvider;
 
-    public NettyClientHandler(UnprocessedRequests unprocessedRequests, ChannelProvider channelProvider) {
-        this.unprocessedRequests = unprocessedRequests;
-        this.channelProvider = channelProvider;
+    public NettyClientHandler() {
+        this.unprocessedRequests = SpringUtil.getBean(UnprocessedRequests.class);
+        this.channelProvider = SpringUtil.getBean(ChannelProvider.class);
     }
 
     /**

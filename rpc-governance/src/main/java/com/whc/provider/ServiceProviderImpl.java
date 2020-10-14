@@ -29,7 +29,7 @@ public class ServiceProviderImpl implements ServiceProvider {
      */
     private final Map<String, Object> serviceMap = new ConcurrentHashMap<>();
     private final ZKService zkService;
-    @Value("${netty.port}")
+    @Value("${netty.port:9999}")
     public int PORT;
 
     public ServiceProviderImpl(ZKService zkService) {

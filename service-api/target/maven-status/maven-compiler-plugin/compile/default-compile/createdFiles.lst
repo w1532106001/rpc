@@ -1,0 +1,5 @@
+com\whc\entity\User.class
+service\MessageService.class
+com\whc\entity\Message.class
+com\whc\service\UserService.class
+com\whc\entity\User$UserBuilder.class

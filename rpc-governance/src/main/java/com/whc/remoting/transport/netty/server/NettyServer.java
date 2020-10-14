@@ -30,7 +30,7 @@ public class NettyServer {
     /**
      * 本地端口
      */
-    @Value("${netty.port}")
+    @Value("${netty.port:9999}")
     public int PORT;
     private final ServiceProvider serviceProvider;
     private final NettyServerHandler nettyServerHandler;
