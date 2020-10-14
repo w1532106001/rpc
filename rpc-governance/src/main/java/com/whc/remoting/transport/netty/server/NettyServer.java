@@ -33,11 +33,9 @@ public class NettyServer {
     @Value("${netty.port:9999}")
     public int PORT;
     private final ServiceProvider serviceProvider;
-    private final NettyServerHandler nettyServerHandler;
 
-    public NettyServer(ServiceProvider serviceProvider, NettyServerHandler nettyServerHandler) {
+    public NettyServer(ServiceProvider serviceProvider) {
         this.serviceProvider = serviceProvider;
-        this.nettyServerHandler = nettyServerHandler;
     }
 
     /**
@@ -79,7 +77,7 @@ public class NettyServer {
                             p.addLast(new IdleStateHandler(30, 0, 0, TimeUnit.SECONDS));
                             p.addLast(new RpcMessageEncoder());
                             p.addLast(new RpcMessageDecoder());
-                            p.addLast(serviceHandlerGroup, nettyServerHandler);
+                            p.addLast(serviceHandlerGroup, new NettyServerHandler());
                         }
 
                     });

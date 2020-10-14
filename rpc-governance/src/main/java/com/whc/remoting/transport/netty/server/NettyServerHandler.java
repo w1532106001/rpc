@@ -6,6 +6,7 @@ import com.whc.remoting.dto.RpcMessage;
 import com.whc.remoting.dto.RpcRequest;
 import com.whc.remoting.dto.RpcResponse;
 import com.whc.remoting.handler.RpcRequestHandler;
+import com.whc.utils.SpringUtil;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -13,21 +14,19 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Component;
 
 /**
  * @author whc
  * @date 2020/10/13
  * @description
  */
-@Component
 @Slf4j
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
 
-    private final RpcRequestHandler rpcRequestHandler;
+    private RpcRequestHandler rpcRequestHandler;
 
-    public NettyServerHandler(RpcRequestHandler rpcRequestHandler) {
-        this.rpcRequestHandler = rpcRequestHandler;
+    public NettyServerHandler() {
+        this.rpcRequestHandler = SpringUtil.getBean(RpcRequestHandler.class);
     }
 
     @Override
