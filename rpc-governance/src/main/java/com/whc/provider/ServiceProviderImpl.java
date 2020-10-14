@@ -67,7 +67,7 @@ public class ServiceProviderImpl implements ServiceProvider {
             rpcServiceProperties.setServiceName(serviceName);
             this.addService(service, serviceInterface, rpcServiceProperties);
             //注册服务
-            zkService.registerService(rpcServiceProperties.toRpcServiceName(),new InetSocketAddress(host, NettyServer.PORT));
+            zkService.registerService(rpcServiceProperties.toRpcServiceName(), new InetSocketAddress(host, NettyServer.PORT));
         } catch (UnknownHostException e) {
             log.error("获取host地址发生异常", e);
             e.printStackTrace();

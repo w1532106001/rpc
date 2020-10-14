@@ -10,6 +10,7 @@ import com.whc.entity.RpcServiceProperties;
 public interface ServiceProvider {
     /**
      * 添加服务信息
+     *
      * @param service              服务类
      * @param serviceClass         由服务实例对象实现的接口类
      * @param rpcServiceProperties 服务相关信息
@@ -18,6 +19,7 @@ public interface ServiceProvider {
 
     /**
      * 获取服务类
+     *
      * @param rpcServiceProperties 服务相关信息
      * @return 服务类
      */
@@ -25,6 +27,7 @@ public interface ServiceProvider {
 
     /**
      * 推送服务信息
+     *
      * @param service              服务类
      * @param rpcServiceProperties 服务相关信息
      */
@@ -32,6 +35,7 @@ public interface ServiceProvider {
 
     /**
      * 推送服务信息
+     *
      * @param service 服务类
      */
     void publishService(Object service);

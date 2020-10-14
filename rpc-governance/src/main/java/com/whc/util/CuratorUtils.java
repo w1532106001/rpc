@@ -75,10 +75,11 @@ public final class CuratorUtils {
 
     /**
      * 删除持久化节点
-     * @param zkClient zk客户端
+     *
+     * @param zkClient       zk客户端
      * @param rpcServiceName 服务名
      */
-    public static void deletePersistentNode(CuratorFramework zkClient,String rpcServiceName){
+    public static void deletePersistentNode(CuratorFramework zkClient, String rpcServiceName) {
 
     }
 
@@ -152,9 +153,9 @@ public final class CuratorUtils {
      *
      * @param rpcServiceName 服务名
      * @param zkClient       zk客户端
-     * 所有机器约定在父目录下创建临时目录节点，然后监听父目录节点的子节点变化消息。
-     * 一旦有机器挂掉，该机器与 zookeeper的连接断开，其所创建的临时目录节点被删除，
-     * 所有其他机器都收到通知：某个兄弟目录被删除，于是，所有人都知道：它上船了
+     *                       所有机器约定在父目录下创建临时目录节点，然后监听父目录节点的子节点变化消息。
+     *                       一旦有机器挂掉，该机器与 zookeeper的连接断开，其所创建的临时目录节点被删除，
+     *                       所有其他机器都收到通知：某个兄弟目录被删除，于是，所有人都知道：它上船了
      */
     private static void registerWatcher(String rpcServiceName, CuratorFramework zkClient) {
         String servicePath = ZK_REGISTER_ROOT_PATH + "/" + rpcServiceName;

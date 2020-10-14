@@ -11,11 +11,11 @@ import java.net.InetSocketAddress;
 public interface ZKService {
     /**
      * 注册服务
-     * @param rpcServiceName 服务名称
+     *
+     * @param rpcServiceName    服务名称
      * @param inetSocketAddress 服务地址
      */
     void registerService(String rpcServiceName, InetSocketAddress inetSocketAddress);
-
 
 
     /**
@@ -28,8 +28,8 @@ public interface ZKService {
     /**
      * 查找服务注册信息.
      *
-     * @return 服务注册信息.
      * @param rpcServiceName 服务名称
+     * @return 服务注册信息.
      */
     InetSocketAddress findService(String rpcServiceName);
 

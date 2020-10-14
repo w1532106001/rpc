@@ -16,7 +16,7 @@ public class ShutdownHook {
     /**
      * 当jvm停止时 清除所有已注册服务
      */
-    public void clearAllRegistryService(){
-        Runtime.getRuntime().addShutdownHook(new Thread(()-> CuratorUtils.clearRegistry(CuratorUtils.getZkClient())));
+    public void clearAllRegistryService() {
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> CuratorUtils.clearRegistry(CuratorUtils.getZkClient())));
     }
 }

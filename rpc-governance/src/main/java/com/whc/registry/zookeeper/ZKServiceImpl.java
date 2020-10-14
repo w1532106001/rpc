@@ -55,6 +55,6 @@ public class ZKServiceImpl implements ZKService {
         String[] socketAddressArray = serviceUrl.split(":");
         String host = socketAddressArray[0];
         int port = Integer.parseInt(socketAddressArray[1]);
-        return new InetSocketAddress(host,port);
+        return new InetSocketAddress(host, port);
     }
 }

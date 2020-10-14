@@ -13,7 +13,7 @@ public abstract class AbstractLoadBalance implements LoadBalance {
         if (serviceAddresses == null && serviceAddresses.size() == 0) {
             return null;
         }
-        if(serviceAddresses.size()==1){
+        if (serviceAddresses.size() == 1) {
             return serviceAddresses.get(0);
         }
         return doSelect(serviceAddresses);
@@ -21,6 +21,7 @@ public abstract class AbstractLoadBalance implements LoadBalance {
 
     /**
      * 选择服务地址
+     *
      * @param serviceAddresses 服务地址
      * @return 服务地址
      */
